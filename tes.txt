@@ -1,0 +1,727 @@
+PALING BAWAH APP.JSX
+{/* SIDEBAR */}
+<aside id="logo-sidebar" className="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">
+   <div className="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
+      <ul className="space-y-2 font-medium">
+         <li>
+            <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg bg-blue-600 dark:text-white hover:bg-gray-100 dark:hover:bg-blue-900 group">
+               <svg className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
+                  <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
+                  <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"/>
+               </svg>
+               <span className="ms-3">Dashboard</span>
+            </a>
+         </li>
+         <li>
+            <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+               <svg className="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
+                  <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"/>
+               </svg>
+               <span className="flex-1 ms-3 whitespace-nowrap">Transactions</span>
+            </a>
+         </li>
+         <li>
+            <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+               <svg className="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z"/>
+               </svg>
+               <span className="flex-1 ms-3 whitespace-nowrap">Inbox</span>
+               <span className="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>
+            </a>
+         </li>
+         <li>
+            <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+               <svg className="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                  <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
+               </svg>
+               <span className="flex-1 ms-3 whitespace-nowrap">Users</span>
+            </a>
+         </li>
+         <li>
+            <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+               <svg className="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
+                  <path d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z"/>
+               </svg>
+               <span className="flex-1 ms-3 whitespace-nowrap">Products</span>
+            </a>
+         </li>
+         <li>
+            <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+               <svg className="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3"/>
+               </svg>
+               <span className="flex-1 ms-3 whitespace-nowrap">Sign In</span>
+            </a>
+         </li>
+         <li>
+            <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+               <svg className="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.96 2.96 0 0 0 .13 5H5Z"/>
+                  <path d="M6.737 11.061a2.961 2.961 0 0 1 .81-1.515l6.117-6.116A4.839 4.839 0 0 1 16 2.141V2a1.97 1.97 0 0 0-1.933-2H7v5a2 2 0 0 1-2 2H0v11a1.969 1.969 0 0 0 1.933 2h12.134A1.97 1.97 0 0 0 16 18v-3.093l-1.546 1.546c-.413.413-.94.695-1.513.81l-3.4.679a2.947 2.947 0 0 1-1.85-.227 2.96 2.96 0 0 1-1.635-3.257l.681-3.397Z"/>
+                  <path d="M8.961 16a.93.93 0 0 0 .189-.019l3.4-.679a.961.961 0 0 0 .49-.263l6.118-6.117a2.884 2.884 0 0 0-4.079-4.078l-6.117 6.117a.96.96 0 0 0-.263.491l-.679 3.4A.961.961 0 0 0 8.961 16Zm7.477-9.8a.958.958 0 0 1 .68-.281.961.961 0 0 1 .682 1.644l-.315.315-1.36-1.36.313-.318Zm-5.911 5.911 4.236-4.236 1.359 1.359-4.236 4.237-1.7.339.341-1.699Z"/>
+               </svg>
+               <span className="flex-1 ms-3 whitespace-nowrap">Sign Up</span>
+            </a>
+         </li>
+      </ul>
+   </div>
+</aside>
+
+<div className="p-4 sm:ml-64">
+   <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
+      <div className="grid grid-cols-3 gap-4 mb-4">
+         <div className="flex items-center justify-center h-24 rounded-sm bg-gray-50 dark:bg-gray-800">
+            <p className="text-2xl text-gray-400 dark:text-gray-500">
+               <svg className="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+               </svg>
+            </p>
+         </div>
+         <div className="flex items-center justify-center h-24 rounded-sm bg-gray-50 dark:bg-gray-800">
+            <p className="text-2xl text-gray-400 dark:text-gray-500">
+               <svg className="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+               </svg>
+            </p>
+         </div>
+         <div className="flex items-center justify-center h-24 rounded-sm bg-gray-50 dark:bg-gray-800">
+            <p className="text-2xl text-gray-400 dark:text-gray-500">
+               <svg className="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+               </svg>
+            </p>
+         </div>
+      </div>
+      <div className="flex items-center justify-center h-48 mb-4 rounded-sm bg-gray-50 dark:bg-gray-800">
+         <p className="text-2xl text-gray-400 dark:text-gray-500">
+            <svg className="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+            </svg>
+         </p>
+      </div>
+      <div className="grid grid-cols-2 gap-4 mb-4">
+         <div className="flex items-center justify-center rounded-sm bg-gray-50 h-28 dark:bg-gray-800">
+            <p className="text-2xl text-gray-400 dark:text-gray-500">
+               <svg className="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+               </svg>
+            </p>
+         </div>
+         <div className="flex items-center justify-center rounded-sm bg-gray-50 h-28 dark:bg-gray-800">
+            <p className="text-2xl text-gray-400 dark:text-gray-500">
+               <svg className="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+               </svg>
+            </p>
+         </div>
+         <div className="flex items-center justify-center rounded-sm bg-gray-50 h-28 dark:bg-gray-800">
+            <p className="text-2xl text-gray-400 dark:text-gray-500">
+               <svg className="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+               </svg>
+            </p>
+         </div>
+         <div className="flex items-center justify-center rounded-sm bg-gray-50 h-28 dark:bg-gray-800">
+            <p className="text-2xl text-gray-400 dark:text-gray-500">
+               <svg className="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+               </svg>
+            </p>
+         </div>
+      </div>
+      <div className="flex items-center justify-center h-48 mb-4 rounded-sm bg-gray-50 dark:bg-gray-800">
+         <p className="text-2xl text-gray-400 dark:text-gray-500">
+            <svg className="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+            </svg>
+         </p>
+      </div>
+      <div className="grid grid-cols-2 gap-4">
+         <div className="flex items-center justify-center rounded-sm bg-gray-50 h-28 dark:bg-gray-800">
+            <p className="text-2xl text-gray-400 dark:text-gray-500">
+               <svg className="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+               </svg>
+            </p>
+         </div>
+         <div className="flex items-center justify-center rounded-sm bg-gray-50 h-28 dark:bg-gray-800">
+            <p className="text-2xl text-gray-400 dark:text-gray-500">
+               <svg className="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+               </svg>
+            </p>
+         </div>
+         <div className="flex items-center justify-center rounded-sm bg-gray-50 h-28 dark:bg-gray-800">
+            <p className="text-2xl text-gray-400 dark:text-gray-500">
+               <svg className="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+               </svg>
+            </p>
+         </div>
+         <div className="flex items-center justify-center rounded-sm bg-gray-50 h-28 dark:bg-gray-800">
+            <p className="text-2xl text-gray-400 dark:text-gray-500">
+               <svg className="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+               </svg>
+            </p>
+         </div>
+      </div>
+   </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FinanceFlow - Financial Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://unpkg.com/chart.js"></script>
+  <script src="https://unpkg.com/react-chartjs-2"></script>
+  <script src="https://unpkg.com/react-router-dom@6/dist/react-router-dom.development.js"></script>
+  <script src="https://unpkg.com/lucide-react"></script>
+  <style>
+    .sidebar-transition {
+      transition: all 0.3s ease;
+    }
+    .card-hover {
+      transition: all 0.2s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    .progress-bar {
+      height: 6px;
+      border-radius: 3px;
+      background-color: #e5e7eb;
+    }
+    .progress-fill {
+      height: 100%;
+      border-radius: 3px;
+      background-color: #3b82f6;
+      transition: width 0.5s ease;
+    }
+    @media (max-width: 768px) {
+      .mobile-collapse {
+        width: 4rem !important;
+      }
+      .mobile-collapse .sidebar-text {
+        display: none !important;
+      }
+      .mobile-collapse .sidebar-icon {
+        margin-left: 0 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+    const { BrowserRouter, Routes, Route, Link } = ReactRouterDOM;
+    const { Line, Doughnut } = ReactChartJS2;
+    const { Home, Wallet, BarChart2, Target, Settings, ArrowUp, ArrowDown, ShoppingCart, Mail, Coffee, Home as HomeIcon, Car, Menu, X, Moon, Sun } = LucideReact;
+
+    // Main App Component
+    function App() {
+      return (
+        <>
+          <div className={flex h-screen bg-gray-50 dark:bg-gray-900 ${darkMode ? 'dark' : ''}}>
+            {/* Sidebar */}
+            <div className={sidebar-transition ${sidebarCollapsed ? 'w-16 mobile-collapse' : 'w-64'} bg-gray-200 dark:bg-gray-800 flex flex-col}>
+              <div className="p-4 flex items-center justify-between border-b border-gray-300 dark:border-gray-700">
+                {!sidebarCollapsed && (
+                  <div className="flex items-center">
+                    <Wallet className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+                    <span className="ml-2 text-xl font-bold text-gray-800 dark:text-white">FinanceFlow</span>
+                  </div>
+                )}
+                {sidebarCollapsed && (
+                  <div className="flex justify-center w-full">
+                    <Wallet className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+                  </div>
+                )}
+                <button 
+                  onClick={toggleSidebar} 
+                  className="p-1 rounded-full hover:bg-gray-300 dark:hover:bg-gray-700"
+                >
+                  {sidebarCollapsed ? <Menu className="w-5 h-5" /> : <X className="w-5 h-5" />}
+                </button>
+              </div>
+              
+              <nav className="flex-1 mt-6">
+                <SidebarLink 
+                  to="/" 
+                  icon={<Home className="w-5 h-5" />} 
+                  text="Dashboard" 
+                  collapsed={sidebarCollapsed} 
+                />
+                <SidebarLink 
+                  to="/transactions" 
+                  icon={<Wallet className="w-5 h-5" />} 
+                  text="Transactions" 
+                  collapsed={sidebarCollapsed} 
+                />
+                <SidebarLink 
+                  to="/analytics" 
+                  icon={<BarChart2 className="w-5 h-5" />} 
+                  text="Analytics" 
+                  collapsed={sidebarCollapsed} 
+                />
+                <SidebarLink 
+                  to="/goals" 
+                  icon={<Target className="w-5 h-5" />} 
+                  text="Goals" 
+                  collapsed={sidebarCollapsed} 
+                />
+                <SidebarLink 
+                  to="/settings" 
+                  icon={<Settings className="w-5 h-5" />} 
+                  text="Settings" 
+                  collapsed={sidebarCollapsed} 
+                />
+              </nav>
+              
+              <div className="p-4 border-t border-gray-300 dark:border-gray-700">
+                <button 
+                  onClick={toggleDarkMode}
+                  className="flex items-center justify-center w-full p-2 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-700"
+                >
+                  {darkMode ? (
+                    <>
+                      <Sun className="w-5 h-5" />
+                      {!sidebarCollapsed && <span className="ml-2">Light Mode</span>}
+                    </>
+                  ) : (
+                    <>
+                      <Moon className="w-5 h-5" />
+                      {!sidebarCollapsed && <span className="ml-2">Dark Mode</span>}
+                    </>
+                  )}
+                </button>
+              </div>
+            </div>
+
+            {/* Main Content */}
+            <div className="flex-1 overflow-auto">
+              <Routes>
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/transactions" element={<PlaceholderPage title="Transactions" />} />
+                <Route path="/analytics" element={<PlaceholderPage title="Analytics" />} />
+                <Route path="/goals" element={<PlaceholderPage title="Goals" />} />
+                <Route path="/settings" element={<PlaceholderPage title="Settings" />} />
+              </Routes>
+            </div>
+          </div>
+        </BrowserRouter>
+      );
+    }
+
+    // Sidebar Link Component
+    function SidebarLink({ to, icon, text, collapsed }) {
+      return (
+        <Link 
+          to={to} 
+          className="flex items-center p-3 mx-2 my-1 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200"
+        >
+          <span className={sidebar-icon ${collapsed ? 'mx-auto' : 'mr-3'}}>
+            {icon}
+          </span>
+          {!collapsed && <span className="sidebar-text">{text}</span>}
+        </Link>
+      );
+    }
+
+    // Placeholder Page Component
+    function PlaceholderPage({ title }) {
+      return (
+        <div className="p-6">
+          <h1 className="text-2xl font-bold text-gray-800 dark:text-white">{title}</h1>
+          <p className="mt-4 text-gray-600 dark:text-gray-400">This is a placeholder for the {title.toLowerCase()} page.</p>
+        </div>
+      );
+    }
+
+    // Dashboard Component
+    function Dashboard() {
+      const [selectedCard, setSelectedCard] = useState(null);
+
+      // Sample data for charts
+      const lineChartData = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+        datasets: [
+          {
+            label: 'Income',
+            data: [5000, 5200, 4800, 5500, 5800, 6000],
+            borderColor: '#10b981',
+            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+            tension: 0.3,
+            fill: true
+          },
+          {
+            label: 'Expenses',
+            data: [3200, 3400, 3000, 3100, 3240, 3300],
+            borderColor: '#ef4444',
+            backgroundColor: 'rgba(239, 68, 68, 0.1)',
+            tension: 0.3,
+            fill: true
+          }
+        ]
+      };
+
+      const doughnutChartData = {
+        labels: ['Food', 'Transport', 'Shopping', 'Bills', 'Entertainment'],
+        datasets: [
+          {
+            data: [1200, 800, 600, 400, 300],
+            backgroundColor: [
+              '#3b82f6',
+              '#14b8a6',
+              '#f59e0b',
+              '#ef4444',
+              '#8b5cf6'
+            ],
+            borderWidth: 0
+          }
+        ]
+      };
+
+      // Sample transactions data
+      const transactions = [
+        { id: 1, date: '2024-01-15', description: 'Grocery Shopping', category: 'Food', amount: -120.50, icon: <ShoppingCart className="w-4 h-4" /> },
+        { id: 2, date: '2024-01-14', description: 'Salary', category: 'Income', amount: 3500.00, icon: <Mail className="w-4 h-4" /> },
+        { id: 3, date: '2024-01-13', description: 'Coffee Shop', category: 'Food', amount: -5.75, icon: <Coffee className="w-4 h-4" /> },
+        { id: 4, date: '2024-01-12', description: 'Rent', category: 'Bills', amount: -1200.00, icon: <HomeIcon className="w-4 h-4" /> },
+        { id: 5, date: '2024-01-11', description: 'Gasoline', category: 'Transport', amount: -45.30, icon: <Car className="w-4 h-4" /> }
+      ];
+
+      // Financial cards data
+      const financialCards = [
+        {
+          id: 'balance',
+          title: 'Total Balance',
+          amount: '$12,560.80',
+          change: '+2.3%',
+          changeColor: 'text-green-500',
+          icon: <ArrowUp className="w-4 h-4 text-green-500" />,
+          modalContent: (
+            <div>
+              <h3 className="text-lg font-semibold">Total Balance Details</h3>
+              <p className="mt-2">Your current total balance across all accounts.</p>
+              <div className="mt-4 space-y-2">
+                <p>Checking Account: $8,450.30</p>
+                <p>Savings Account: $3,210.50</p>
+                <p>Investments: $900.00</p>
+              </div>
+            </div>
+          )
+        },
+        {
+          id: 'income',
+          title: 'Monthly Income',
+          amount: '$5,820.00',
+          change: '+4.1%',
+          changeColor: 'text-green-500',
+          icon: <ArrowUp className="w-4 h-4 text-green-500" />,
+          modalContent: (
+            <div>
+              <h3 className="text-lg font-semibold">Monthly Income Details</h3>
+              <p className="mt-2">Your income sources for this month.</p>
+              <div className="mt-4 space-y-2">
+                <p>Salary: $4,500.00</p>
+                <p>Freelance: $800.00</p>
+                <p>Investments: $520.00</p>
+              </div>
+            </div>
+          )
+        },
+        {
+          id: 'expenses',
+          title: 'Monthly Expenses',
+          amount: '$3,240.50',
+          change: '–1.8%',
+          changeColor: 'text-red-500',
+          icon: <ArrowDown className="w-4 h-4 text-red-500" />,
+          modalContent: (
+            <div>
+              <h3 className="text-lg font-semibold">Monthly Expenses Details</h3>
+              <p className="mt-2">Your spending breakdown for this month.</p>
+              <div className="mt-4 space-y-2">
+                <p>Housing: $1,200.00</p>
+                <p>Food: $650.50</p>
+                <p>Transportation: $450.00</p>
+                <p>Entertainment: $300.00</p>
+                <p>Other: $640.00</p>
+              </div>
+            </div>
+          )
+        },
+        {
+          id: 'savings',
+          title: 'Savings Goal',
+          amount: '$8,400.00',
+          progress: 60,
+          modalContent: (
+            <div>
+              <h3 className="text-lg font-semibold">Savings Goal Details</h3>
+              <p className="mt-2">Your progress toward your savings goal.</p>
+              <div className="mt-4">
+                <p>Target Amount: $8,400.00</p>
+                <p className="mt-2">Current Savings: $5,040.00 (60%)</p>
+                <div className="w-full bg-gray-200 rounded-full h-2.5 mt-2">
+                  <div className="bg-blue-600 h-2.5 rounded-full" style={{ width: '60%' }}></div>
+                </div>
+                <p className="mt-2">Remaining: $3,360.00</p>
+              </div>
+            </div>
+          )
+        }
+      ];
+
+      const closeModal = () => {
+        setSelectedCard(null);
+      };
+
+      return (
+        <div className="p-6">
+          {/* Header */}
+          <div className="flex justify-between items-center mb-8">
+            <h1 className="text-2xl font-bold text-gray-800 dark:text-white">Dashboard</h1>
+            <div className="flex items-center space-x-2">
+              <span className="text-gray-700 dark:text-gray-300">John Doe</span>
+              <div className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white">
+                JD
+              </div>
+            </div>
+          </div>
+
+          {/* Financial Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            {financialCards.map((card) => (
+              <div 
+                key={card.id}
+                onClick={() => setSelectedCard(card)}
+                className="card-hover bg-white dark:bg-gray-800 rounded-xl shadow p-6 cursor-pointer"
+              >
+                <h3 className="text-gray-500 dark:text-gray-400 text-sm font-medium">{card.title}</h3>
+                <p className="text-2xl font-bold mt-2 text-gray-800 dark:text-white">{card.amount}</p>
+                
+                {card.change && (
+                  <div className="flex items-center mt-3">
+                    <span className={text-sm font-medium ${card.changeColor}}>
+                      {card.change}
+                    </span>
+                    <span className="ml-1">{card.icon}</span>
+                  </div>
+                )}
+                
+                {card.progress && (
+                  <div className="mt-4">
+                    <div className="progress-bar w-full">
+                      <div 
+                        className="progress-fill" 
+                        style={{ width: ${card.progress}% }}
+                      ></div>
+                    </div>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                      {card.progress}% of goal
+                    </p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Charts */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow p-6">
+              <h3 className="text-gray-800 dark:text-white font-medium mb-4">Income vs Expenses</h3>
+              <div className="h-64">
+                <Line 
+                  data={lineChartData}
+                  options={{
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                      legend: {
+                        position: 'top',
+                        labels: {
+                          color: '#6b7280'
+                        }
+                      }
+                    },
+                    scales: {
+                      y: {
+                        beginAtZero: true,
+                        grid: {
+                          color: '#e5e7eb'
+                        },
+                        ticks: {
+                          color: '#6b7280'
+                        }
+                      },
+                      x: {
+                        grid: {
+                          color: '#e5e7eb'
+                        },
+                        ticks: {
+                          color: '#6b7280'
+                        }
+                      }
+                    }
+                  }}
+                />
+              </div>
+            </div>
+            
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow p-6">
+              <h3 className="text-gray-800 dark:text-white font-medium mb-4">Spending by Category</h3>
+              <div className="h-64 flex">
+                <div className="w-2/3">
+                  <Doughnut 
+                    data={doughnutChartData}
+                    options={{
+                      responsive: true,
+                      maintainAspectRatio: false,
+                      cutout: '70%',
+                      plugins: {
+                        legend: {
+                          display: false
+                        }
+                      }
+                    }}
+                  />
+                </div>
+                <div className="w-1/3 pl-4 flex flex-col justify-center">
+                  {doughnutChartData.labels.map((label, index) => (
+                    <div key={label} className="flex items-center mb-2">
+                      <div 
+                        className="w-3 h-3 rounded-full mr-2" 
+                        style={{ backgroundColor: doughnutChartData.datasets[0].backgroundColor[index] }}
+                      ></div>
+                      <span className="text-sm text-gray-700 dark:text-gray-300">{label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Recent Transactions */}
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow overflow-hidden">
+            <div className="p-6 flex justify-between items-center border-b border-gray-200 dark:border-gray-700">
+              <h3 className="text-gray-800 dark:text-white font-medium">Recent Transactions</h3>
+              <button className="text-blue-600 dark:text-blue-400 text-sm font-medium">
+                View All
+              </button>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                <thead className="bg-gray-50 dark:bg-gray-700">
+                  <tr>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Date</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Description</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Category</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Amount</th>
+                  </tr>
+                </thead>
+                <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                  {transactions.map((transaction) => (
+                    <tr key={transaction.id}>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">{transaction.date}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
+                        <div className="flex items-center">
+                          <span className="mr-2">{transaction.icon}</span>
+                          {transaction.description}
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">{transaction.category}</td>
+                      <td className={px-6 py-4 whitespace-nowrap text-sm font-medium ${transaction.amount >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}}>
+                        {transaction.amount >= 0 ? '+' : ''}{transaction.amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* Modal */}
+          {selectedCard && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-md w-full p-6">
+                <div className="flex justify-between items-start">
+                  <h2 className="text-xl font-bold text-gray-800 dark:text-white">{selectedCard.title}</h2>
+                  <button 
+                    onClick={closeModal}
+                    className="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300"
+                  >
+                    <X className="w-6 h-6" />
+                  </button>
+                </div>
+                <div className="mt-4">
+                  {selectedCard.modalContent}
+                </div>
+                <div className="mt-6 flex justify-end">
+                  <button 
+                    onClick={closeModal}
+                    className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // Render the app
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>
