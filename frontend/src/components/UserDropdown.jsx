@@ -5,18 +5,18 @@ export default function UserDropdown() {
 
   return (
     <div className="relative">
-        <button
-            type="button"
-            className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-            onClick={() => setOpen(!open)}
-        >
-          <span className="sr-only">Open user menu</span>
-          <img
+      <button
+          type="button"
+          className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+          onClick={() => setOpen(!open)}
+      >
+        <span className="sr-only">Open user menu</span>
+        <img
             className="w-8 h-8 rounded-full"
             src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
             alt="user photo"
-            />
-        </button>
+          />
+      </button>
         {open && (
         <div className="absolute right-0 mt-2 w-48 z-[100] bg-white divide-y divide-gray-100 rounded-md shadow-lg dark:bg-gray-700 dark:divide-gray-600">
           <div className="px-4 py-3" role="none">
