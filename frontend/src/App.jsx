@@ -1,15 +1,11 @@
-import './App.css'
-import UserDropdown from './components/UserDropdown';
-import Login from './pages/login'
-import LoginForm from './components/LoginForm';
+import { Routes, Route } from 'react-router-dom';
+import Login from './pages/login';
+import Register from './pages/register';
 
 function App() {
-
   return (
-    <>
-      <Login />
-    </>
-  )
+      <Register />
+  );
 }
 
-export default App
+export default App;

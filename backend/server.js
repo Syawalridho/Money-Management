@@ -3,11 +3,16 @@ const cors = require('cors');
 const mysql = require('mysql2');
 require('dotenv').config();
 
+const authRoutes = require('./routes/route');
+
+
 const app = express();
 const PORT = 3001;
 
 app.use(cors());
 app.use(express.json());
+
+app.use('/api', authRoutes);
 
 const db = mysql.createConnection({
   host: 'localhost',
