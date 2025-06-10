@@ -1,16 +1,18 @@
-import React, { useState } from 'react'
-import fon from "../images/fon.jpg"
-import axios from 'axios'
+// src/pages/login.jsx
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Login = () => {
     const [identifier, setIdentifier] = useState('');
     const [password, setPassword] = useState('');
-
     const [message, setMessage] = useState('');
-    const [isLoading, setIsLoading] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
+    
+    const navigate = useNavigate(); // Hook untuk navigasi
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Mencegah reload halaman standar
+        e.preventDefault();
         setIsLoading(true);
         setMessage('');
 
@@ -21,69 +23,77 @@ const Login = () => {
         }
 
         try {
-            const loginData = {
-                identifier: identifier,
-                password: password
-            };
-        
-            const response = await axios.post('http://localhost:3001/login', loginData);
-         
-            setMessage(response.data.message || 'Login berhasil!');
+            const loginData = { identifier, password };
+            // URL disesuaikan menjadi /api/login
+            const response = await axios.post('http://localhost:3001/api/login', loginData);
 
-            if (response.data.token) {
-                localStorage.setItem('authToken', response.data.token);
-                console.log('Token disimpan:', response.data.token);
+            if (response.data.success) {
+                setMessage(response.data.message);
+                console.log('Login sukses, data pengguna:', response.data.user);
+                // Simpan info pengguna jika perlu, contoh:
+                // localStorage.setItem('user', JSON.stringify(response.data.user));
+                
+                // Arahkan ke dashboard setelah login berhasil
+                navigate('/dashboard'); 
+            } else {
+                setMessage(response.data.message || 'Kredensial tidak valid.');
             }
         } catch (error) {
-            if (error.response) {
-                setMessage(error.response.data.message || 'Terjadi kesalahan. Coba lagi.');
-            } else if (error.request) {
-                setMessage('Tidak dapat terhubung ke server. Periksa koneksi Anda.');
-            } else {
-                setMessage('Terjadi kesalahan. Silakan coba lagi.');
-            }
+            const errorMsg = error.response ? error.response.data.message : 'Tidak dapat terhubung ke server.';
+            setMessage(errorMsg);
+            console.error('Login error:', error);
         } finally {
             setIsLoading(false);
         }
     };
 
-    return ( 
-        <div className='text-white h-[100vh] flex justify-center items-center bg-cover bg-no-repeat m-0 '>
-            <div className='flex-row bg-blue-400 bg-opacity-45 p-20 m-20  rounded-tl-3xl rounded-tr-3xl rounded-bl-3xl'>
-                <h1 className='p-2 text-center pb-8 font-sans text-xl'>Login</h1>
-                <form onSubmit={handleSubmit} className='grid grid-row-3 gap-4'>
-                    <input 
-                        className='p-2 focus:outline-none bg-white text-gray-700' 
-                        type="text" 
-                        placeholder='Username atau Email' 
+    return (
+        <div className='text-white h-screen flex justify-center items-center bg-gray-800 p-4'>
+            <div className='bg-blue-400 bg-opacity-45 p-10 md:p-16 rounded-xl shadow-lg w-full max-w-md'>
+                <h1 className='text-3xl font-bold text-center mb-6'>Login</h1>
+                <form onSubmit={handleSubmit} className='space-y-6'>
+                    <input
+                        className='w-full p-3 bg-white text-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300'
+                        type="text"
+                        placeholder='Username atau Email'
                         value={identifier}
                         onChange={(e) => setIdentifier(e.target.value)}
-                        disabled={isLoading} 
+                        disabled={isLoading}
                     />
                     <input
-                        className='p-2 focus:outline-none bg-white text-gray-700 rounded'
-                        type="password" 
-                        placeholder='Password' 
+                        className='w-full p-3 bg-white text-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300'
+                        type="password"
+                        placeholder='Password'
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         disabled={isLoading}
                     />
                     {message && (
-                        <p className={`text-sm p-2 rounded ${message.includes('berhasil') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                        <p className={`text-sm p-3 rounded-md ${
+                            message.toLowerCase().includes('berhasil') 
+                                ? 'bg-green-100 text-green-800' 
+                                : 'bg-red-100 text-red-800'
+                        }`}>
                             {message}
                         </p>
                     )}
                     <button
-                        type="submit" // Tambahkan type="submit"
-                        className='bg-blue-800 rounded-xl p-2 hover:bg-blue-500 hover:text-orange-50 disabled:bg-gray-500'
+                        type="submit"
+                        className='w-full bg-blue-700 rounded-xl p-3 text-lg font-semibold hover:bg-blue-600 active:bg-blue-800 disabled:bg-gray-500 transition-colors'
                         disabled={isLoading}
                     >
                         {isLoading ? 'Memproses...' : 'Login'}
                     </button>
                 </form>
+                <p className="mt-6 text-center text-sm">
+                    Belum punya akun?{' '}
+                    <Link to="/register" className="font-medium hover:text-blue-200">
+                        Daftar di sini
+                    </Link>
+                </p>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Login
+export default Login;
