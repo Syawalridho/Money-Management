@@ -1,25 +1,24 @@
-// src/App.jsx
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+// Pastikan semua komponen yang dibutuhkan diimpor dari 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom';
 
-// Impor komponen halaman Anda
-// Sesuaikan path jika Anda meletakkannya di folder berbeda, misal './pages/Login'
+// Impor semua komponen halaman Anda
+// Pastikan path ini benar sesuai struktur folder Anda
 import Login from '../pages/login'; 
 import Register from '../pages/register';
 import Dashboard from '../pages/dashboard';
 
 function AppRoutes() {
-  // Komponen <Router> sudah dihapus dari sini. Langsung return <Routes>.
+  // TIDAK ADA <Router> DI SINI. Langsung return <Routes>.
   return (
       <Routes>
-        {/* Rute default akan mengarahkan ke /login */}
+        {/* Rute default akan otomatis mengarahkan ke halaman login */}
         <Route path="/" element={<Navigate to="/login" />} />      
         
+        {/* Rute untuk setiap halaman */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        
-        {/* Rute untuk dashboard setelah login */}
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={ <Dashboard />} />
       </Routes>
   );
 }
