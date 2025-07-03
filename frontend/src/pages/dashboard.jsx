@@ -7,10 +7,10 @@ import Sidebar from '../partial/sidebar';
 import Header from '../partial/header';
 
 // Impor komponen kartu dashboard
-import IncomeExpense from '../components/cards/IncomeExpense';
-import Transactions from '../components/cards/Transactions';
-import SpendingCategory from '../components/cards/SpendingCategory';
-import BudgetStatus from '../components/cards/BudgetStatus';
+import IncomeExpense from '../components/Dashboard/IncomeExpense';
+import Transactions from '../components/Dashboard/Transactions';
+import SpendingCategory from '../components/Dashboard/SpendingCategory';
+import BudgetStatus from '../components/Dashboard/BudgetStatus';
 
 
 // --- Komponen Halaman Dashboard Utama ---
@@ -40,7 +40,7 @@ const Dashboard = () => {
                 <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
                 
                 <main>
-                    <div className="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+                    <div className="mx-3 max-w-screen-2xl p-4 md:p-6 2xl:p-10">
                         
                         {/* Kartu Saldo Utama */}
                         <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm mb-6">

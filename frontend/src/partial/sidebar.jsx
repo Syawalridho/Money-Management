@@ -20,7 +20,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
         <aside className={`fixed left-0 top-0 z-50 flex h-screen w-72 flex-col overflow-y-hidden bg-gray-800 text-white duration-300 ease-linear lg:static lg:translate-x-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
             <div className="flex items-center justify-between gap-2 px-6 py-5 lg:py-6">
                 <a href="/dashboard" className="text-2xl font-bold text-white">
-                    FinanceFlow
+                    MNYY
                 </a>
                 <button onClick={() => setSidebarOpen(false)} className="lg:hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
@@ -29,7 +29,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
             <nav className="flex flex-col flex-grow justify-between px-4 py-4">
                 <ul className="space-y-2">
                     <li><a href="#" className="flex items-center gap-3 rounded-md px-4 py-3 text-white bg-blue-600 font-medium"><DashboardIcon /> Dashboard</a></li>
-                    <li><a href="#" className="flex items-center gap-3 rounded-md px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white transition-colors"><TransactionIcon /> Transactions</a></li>
+                    <li><a href="/transactions" className="flex items-center gap-3 rounded-md px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white transition-colors"><TransactionIcon /> Transactions</a></li>
                     <li><a href="#" className="flex items-center gap-3 rounded-md px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white transition-colors"><AnalyticsIcon /> Analytics</a></li>
                 </ul>
                 <ul className="space-y-2">

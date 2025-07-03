@@ -22,7 +22,7 @@ const SpendingCategory = () => {
                     <Tooltip formatter={(value, name) => [`Rp${new Intl.NumberFormat('id-ID').format(value)}`, name]} />
                 </PieChart>
              </ResponsiveContainer>
-             <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm">
+             <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm text-gray-600">
                 {data.map((entry, index) => (
                     <div key={`legend-${index}`} className="flex items-center gap-2">
                         <span className="w-3 h-3 rounded-full" style={{backgroundColor: COLORS[index % COLORS.length]}}></span>
@@ -34,4 +34,4 @@ const SpendingCategory = () => {
     )
 }
 
-export default CategoryChart;
+export default SpendingCategory;

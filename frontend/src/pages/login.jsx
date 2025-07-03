@@ -1,7 +1,8 @@
 // src/pages/login.jsx
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext'; // <-- Impor useAuth
 
 const Login = () => {
     const [identifier, setIdentifier] = useState('');
@@ -9,7 +10,7 @@ const Login = () => {
     const [message, setMessage] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     
-    const navigate = useNavigate(); // Hook untuk navigasi
+    const { login } = useAuth(); // <-- Gunakan fungsi login dari context
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -24,34 +25,30 @@ const Login = () => {
 
         try {
             const loginData = { identifier, password };
-            // URL disesuaikan menjadi /api/login
             const response = await axios.post('http://localhost:3001/api/login', loginData);
 
             if (response.data.success) {
-                setMessage(response.data.message);
-                console.log('Login sukses, data pengguna:', response.data.user);
-                // Simpan info pengguna jika perlu, contoh:
-                // localStorage.setItem('user', JSON.stringify(response.data.user));
-                
-                // Arahkan ke dashboard setelah login berhasil
-                navigate('/dashboard'); 
+                // Panggil fungsi login dari context dengan data pengguna dari API
+                console.log('Data Pengguna dari API:', response.data.user); 
+                login(response.data.user); 
             } else {
                 setMessage(response.data.message || 'Kredensial tidak valid.');
             }
         } catch (error) {
             const errorMsg = error.response ? error.response.data.message : 'Tidak dapat terhubung ke server.';
             setMessage(errorMsg);
-            console.error('Login error:', error);
         } finally {
             setIsLoading(false);
         }
     };
 
+    // ... sisa kode JSX Anda tetap sama ...
     return (
         <div className='text-white h-screen flex justify-center items-center bg-gray-800 p-4'>
             <div className='bg-blue-400 bg-opacity-45 p-10 md:p-16 rounded-xl shadow-lg w-full max-w-md'>
                 <h1 className='text-3xl font-bold text-center mb-6'>Login</h1>
                 <form onSubmit={handleSubmit} className='space-y-6'>
+                    {/* ... input fields ... */}
                     <input
                         className='w-full p-3 bg-white text-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300'
                         type="text"
@@ -70,7 +67,7 @@ const Login = () => {
                     />
                     {message && (
                         <p className={`text-sm p-3 rounded-md ${
-                            message.toLowerCase().includes('berhasil') 
+                            message.includes('berhasil') || message.includes('Selamat datang') 
                                 ? 'bg-green-100 text-green-800' 
                                 : 'bg-red-100 text-red-800'
                         }`}>

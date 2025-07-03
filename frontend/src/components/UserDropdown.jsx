@@ -1,54 +1,91 @@
-import { useState } from "react";
+// src/components/DropdownProfile.jsx (atau nama file dropdown Anda)
 
-export default function UserDropdown() {
-  const [open, setOpen] = useState(false);
+import { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext'; // <-- Pastikan ini diimpor
+
+function DropdownProfile({ align }) {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const { user, logout } = useAuth(); // <-- Ambil 'user' dan 'logout' dari context
+
+  const trigger = useRef(null);
+  const dropdown = useRef(null);
+
+  // Menutup dropdown saat diklik di luar
+  useEffect(() => {
+    const clickHandler = ({ target }) => {
+      if (!dropdown.current) return;
+      if (!dropdownOpen || dropdown.current.contains(target) || trigger.current.contains(target)) return;
+      setDropdownOpen(false);
+    };
+    document.addEventListener('click', clickHandler);
+    return () => document.removeEventListener('click', clickHandler);
+  });
 
   return (
-    <div className="relative">
+    <div className="relative inline-flex">
       <button
-          type="button"
-          className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-          onClick={() => setOpen(!open)}
+        ref={trigger}
+        className="inline-flex justify-center items-center group"
+        aria-haspopup="true"
+        onClick={() => setDropdownOpen(!dropdownOpen)}
+        aria-expanded={dropdownOpen}
       >
-        <span className="sr-only">Open user menu</span>
-        <img
-            className="w-8 h-8 rounded-full"
-            src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-            alt="user photo"
-          />
+        <img className="w-8 h-8 rounded-full" src="https://i.pravatar.cc/150" width="32" height="32" alt="User" />
+        <div className="flex items-center truncate">
+          <span className="truncate ml-2 text-sm font-medium dark:text-gray-300 group-hover:text-gray-800 dark:group-hover:text-white">
+            {/* GANTI BAGIAN INI */}
+            {user ? user.username : 'Guest'} 
+          </span>
+          <svg className="w-3 h-3 shrink-0 ml-1 fill-current text-gray-400" viewBox="0 0 12 12">
+            <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4 1.4 1.4z" />
+          </svg>
+        </div>
       </button>
-        {open && (
-        <div className="absolute right-0 mt-2 w-48 z-[100] bg-white divide-y divide-gray-100 rounded-md shadow-lg dark:bg-gray-700 dark:divide-gray-600">
-          <div className="px-4 py-3" role="none">
-            <p className="text-sm text-gray-900 dark:text-white">Admin</p>
-            <p className="text-sm font-medium text-gray-900 truncate dark:text-gray-300">
-              Admin@test.com
-            </p>
+
+      {/* Dropdown menu */}
+      {dropdownOpen && (
+        <div
+          ref={dropdown}
+          className="origin-top-right z-10 absolute top-full min-w-44 bg-white dark:bg-[#182235] border border-gray-200 dark:border-gray-700/60 py-1.5 rounded-lg shadow-lg overflow-hidden mt-1"
+          style={{ right: align === 'right' ? 0 : 'auto', left: align !== 'right' ? 0 : 'auto' }}
+        >
+          <div className="pt-0.5 pb-2 px-3 mb-1 border-b border-gray-200 dark:border-gray-700/60">
+            <div className="font-medium text-gray-800 dark:text-gray-100">
+              {/* GANTI BAGIAN INI */}
+              {user ? user.username : 'Guest'}
+            </div>
+            <div className="text-xs text-gray-500 dark:text-gray-400 italic">
+              {/* ASUMSI ADA 'role' DI DATA USER ANDA */}
+              {user ? user.role : 'User'}
+            </div>
           </div>
-          <ul className="py-1" role="none">
+          <ul>
             <li>
-              <a href="#" className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-300 dark:hover:text-white">
-                Dashboard
-              </a>
+              <Link
+                className="font-medium text-sm text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center py-1 px-3"
+                to="/profile"
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+              >
+                Profile
+              </Link>
             </li>
             <li>
-              <a href="#" className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-300 dark:hover:text-white">
-                Settings
-              </a>
-            </li>
-            <li>
-              <a href="#" className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-300 dark:hover:text-white">
-                Earnings
-              </a>
-            </li>
-            <li>
-              <a href="#" className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-300 dark:hover:text-white">
-                Sign out
-              </a>
+              <button
+                className="font-medium text-sm text-red-500 hover:text-red-600 w-full text-left flex items-center py-1 px-3"
+                onClick={() => {
+                  setDropdownOpen(false);
+                  logout(); // Panggil fungsi logout dari context
+                }}
+              >
+                Logout
+              </button>
             </li>
           </ul>
         </div>
       )}
     </div>
-  );
+  )
 }
+
+export default DropdownProfile;
