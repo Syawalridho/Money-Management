@@ -28,7 +28,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
             </div>
             <nav className="flex flex-col flex-grow justify-between px-4 py-4">
                 <ul className="space-y-2">
-                    <li><a href="#" className="flex items-center gap-3 rounded-md px-4 py-3 text-white bg-blue-600 font-medium"><DashboardIcon /> Dashboard</a></li>
+                    <li><a href="dashboard" className="flex items-center gap-3 rounded-md px-4 py-3 text-white bg-blue-600 font-medium"><DashboardIcon /> Dashboard</a></li>
                     <li><a href="/transactions" className="flex items-center gap-3 rounded-md px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white transition-colors"><TransactionIcon /> Transactions</a></li>
                     <li><a href="#" className="flex items-center gap-3 rounded-md px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white transition-colors"><AnalyticsIcon /> Analytics</a></li>
                 </ul>

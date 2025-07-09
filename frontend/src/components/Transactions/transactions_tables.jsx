@@ -68,13 +68,13 @@ const TransactionsTable = () => {
             <div className="flex items-center justify-between p-4 text-sm">
                 <span className="text-gray-600">Showing 1 to 8 of 50 entries</span>
                 <div className="flex items-center space-x-2">
-                    <button className="p-2 border rounded-md hover:bg-gray-100 disabled:opacity-50" disabled><ChevronLeft size={16}/></button>
+                    <button className="p-2 border rounded-md text-black hover:bg-gray-100 disabled:opacity-50" disabled><ChevronLeft size={16}/></button>
                     <button className="w-8 h-8 border rounded-md bg-blue-600 text-white">1</button>
-                    <button className="w-8 h-8 border rounded-md hover:bg-gray-100">2</button>
-                    <button className="w-8 h-8 border rounded-md hover:bg-gray-100">3</button>
-                    <span>...</span>
-                    <button className="w-8 h-8 border rounded-md hover:bg-gray-100">5</button>
-                    <button className="p-2 border rounded-md hover:bg-gray-100"><ChevronRight size={16}/></button>
+                    <button className="w-8 h-8 border rounded-md text-black hover:bg-gray-100">2</button>
+                    <button className="w-8 h-8 border rounded-md text-black hover:bg-gray-100">3</button>
+                    <span className="text-black">...</span>
+                    <button className="w-8 h-8 border rounded-md text-black hover:bg-gray-100">5</button>
+                    <button className="p-2 border rounded-md text-black hover:bg-gray-100"><ChevronRight size={16}/></button>
                 </div>
             </div>
         </div>
