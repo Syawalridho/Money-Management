@@ -7,8 +7,8 @@ import Header from '../partial/header';
 // Impor semua komponen kartu dashboard yang akan digunakan
 import IncomeExpense from '../components/Dashboard/IncomeExpense';
 import SpendingCategory from '../components/Dashboard/SpendingCategory';
-import SummaryCards from '../components/Dashboard/SummaryCards'; // Komponen baru
-import Transactions from '../components/Dashboard/Transactions';   // Komponen yang dirombak
+import SummaryCards from '../components/Dashboard/SummaryCards'; 
+import Transactions from '../components/Dashboard/Transactions';  
 
 const Dashboard = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);

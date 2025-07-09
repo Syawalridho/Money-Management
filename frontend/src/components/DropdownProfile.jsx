@@ -1,5 +1,3 @@
-// src/components/DropdownProfile.jsx
-
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -79,15 +77,6 @@ function DropdownProfile({ align }) {
               <Link
                 className="font-medium text-sm text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 flex items-center py-1 px-3"
                 to="/profile"
-                onClick={() => setDropdownOpen(false)}
-              >
-                Profile
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="font-medium text-sm text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 flex items-center py-1 px-3"
-                to="/settings"
                 onClick={() => setDropdownOpen(false)}
               >
                 Pengaturan Akun

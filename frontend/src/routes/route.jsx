@@ -8,7 +8,7 @@ import Login from '../pages/login';
 import Register from '../pages/register';
 import Dashboard from '../pages/dashboard';
 import TransactionsPage from '../pages/transactions_page';
-import Profile from '../pages/profile';
+import ProfilePage from '../pages/profile';
 
 function AppRoutes() {
   // TIDAK ADA <Router> DI SINI. Langsung return <Routes>.
@@ -20,7 +20,7 @@ function AppRoutes() {
         {/* Rute untuk setiap halaman */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="/dashboard" element={ <Dashboard />} />
         <Route path="/transactions" element={ <TransactionsPage />} />
       </Routes>
