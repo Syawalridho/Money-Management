@@ -11,8 +11,8 @@ const IncomeExpense = () => {
         { name: 'Jun', Pemasukan: 4390, Pengeluaran: 3800 },
     ];
     return (
-        <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm h-96">
-            <h3 className="font-semibold text-gray-800">Pemasukan vs Pengeluaran</h3>
+        <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:bg-gray-800 dark:border-gray-700 h-96">
+            <h3 className="font-semibold text-gray-800 dark:text-gray-400">Pemasukan vs Pengeluaran</h3>
             <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={data} margin={{ top: 30, right: 20, left: -20, bottom: 20 }}>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} />
