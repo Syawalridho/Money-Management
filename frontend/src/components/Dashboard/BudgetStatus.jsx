@@ -1,8 +1,8 @@
 import React from 'react';
 
 const BudgetStatus = () => (
-    <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-        <h3 className="font-semibold text-gray-800 mb-4">Batas Anggaran</h3>
+    <div className="rounded-xl border border-gray-200 bg-white p-6 dark:bg-gray-800 dark:border-gray-700 shadow-sm">
+        <h3 className="font-semibold text-gray-800 dark:text-gray-400 mb-4">Batas Anggaran</h3>
         <ul className="space-y-4">
             <li>
                 <p className="flex justify-between text-sm"><span className="font-medium text-gray-600">Makanan & Minuman</span><span className='text-gray-500'>Rp750.000 / Rp1.500.000</span></p>

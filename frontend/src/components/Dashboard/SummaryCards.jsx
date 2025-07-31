@@ -3,9 +3,9 @@ import BudgetStatus from './BudgetStatus'; // Mengimpor komponen yang sudah Anda
 
 // Komponen placeholder untuk kartu ringkasan lainnya
 const StatCard = ({ title, value, description }) => (
-    <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm h-full">
+    <div className="rounded-xl border border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-700 p-6 shadow-sm h-full">
         <p className="text-gray-500">{title}</p>
-        <p className="text-2xl font-bold text-gray-800 my-2">Rp{new Intl.NumberFormat('id-ID').format(value)}</p>
+        <p className="text-2xl font-bold text-gray-800 my-2 dark:text-gray-400">Rp{new Intl.NumberFormat('id-ID').format(value)}</p>
         <p className="text-sm text-gray-400">{description}</p>
     </div>
 );

@@ -2,13 +2,13 @@ import React from 'react';
 import { ArrowUpRight, ArrowDownLeft, WalletCards, Scale } from 'lucide-react';
 
 const StatCard = ({ icon, title, value, bgColor, iconColor }) => (
-    <div className="bg-white p-6 rounded-xl shadow-md flex items-center space-x-4">
+    <div className="bg-white p-6 rounded-xl shadow-md flex items-center space-x-4 dark:bg-gray-800 dark:border-gray-700">
         <div className={`p-3 rounded-full ${bgColor}`}>
             {React.cloneElement(icon, { color: iconColor, size: 24 })}
         </div>
         <div>
-            <p className="text-sm text-gray-500">{title}</p>
-            <p className="text-2xl font-bold text-gray-800">{value}</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">{title}</p>
+            <p className="text-2xl font-bold text-gray-800 dark:text-gray-400">{value}</p>
         </div>
     </div>
 );

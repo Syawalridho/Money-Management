@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
 
-// Impor komponen layout
-import Sidebar from '../partial/sidebar';
-import Header from '../partial/header';
-
 // Impor komponen-komponen card yang sudah dipisah
 import PersonalInfoCard from '../components/Profile/personal';
 import PasswordCard from '../components/Profile/password_card';
@@ -24,14 +20,8 @@ const ProfilePage = () => {
 
     return (
         <div className="flex h-screen overflow-hidden bg-gray-100 dark:bg-gray-900">
-            {/* Sidebar */}
-            <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-            
             {/* Area Konten */}
             <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
-                {/* Header */}
-                <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-                
                 <main>
                     <div className="mx-auto max-w-4xl p-4 md:p-6 2xl:p-10">
                         {/* Header Halaman */}

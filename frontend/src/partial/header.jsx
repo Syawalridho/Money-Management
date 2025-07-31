@@ -1,16 +1,9 @@
-// src/partial/header.jsx
-
 import React, { useState } from 'react';
 
-// Impor komponen dropdown yang baru
 import DropdownProfile from '../components/DropdownProfile'; 
+import ThemeToggle from '../components/ThemeToggle'; // <-- 1. Impor komponen baru
 
-// Anda bisa membuat komponen placeholder ini jika belum ada
-const SearchModal = () => null;
-const Notifications = () => <div className="text-gray-500">🔔</div>;
-const Help = () => <div className="text-gray-500">❓</div>;
-const ThemeToggle = () => <div className="text-gray-500">🌗</div>;
-
+// Hapus definisi placeholder const ThemeToggle = ...
 
 function Header({
   sidebarOpen,
@@ -43,15 +36,13 @@ function Header({
 
           {/* Header: Right side */}
           <div className="flex items-center space-x-3">
-            {/* Tombol-tombol lain bisa Anda aktifkan nanti */}
-            {/* <Notifications align="right" /> */}
-            {/* <Help align="right" /> */}
-            {/* <ThemeToggle /> */}
+            
+            {/* 2. Gunakan komponen ThemeToggle di sini */}
+            <ThemeToggle />
             
             {/* Pembatas */}
             <hr className="w-px h-6 bg-gray-200 dark:bg-gray-700/60 border-none" />
             
-            {/* Gunakan komponen DropdownProfile di sini */}
             <DropdownProfile align="right" />
 
           </div>

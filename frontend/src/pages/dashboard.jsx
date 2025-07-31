@@ -18,20 +18,13 @@ const Dashboard = () => {
 
     return (
         <div className="flex h-screen overflow-hidden bg-gray-100 dark:bg-gray-900">
-            {/* Sidebar */}
-            <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-            
-            {/* Area Konten */}
-            <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
-                {/* Header */}
-                <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-                
+            <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">    
                 <main>
                     <div className="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
                         {/* Kartu Saldo Utama Tetap di Atas */}
-                        <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm mb-6">
-                            <p className="text-lg font-medium text-gray-600">Saldo Utama</p>
-                            <p className="text-4xl font-bold text-gray-900 mt-2">
+                        <div className="rounded-xl border border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-700 p-6 shadow-sm mb-6">
+                            <p className="text-lg font-medium text-gray-600 dark:text-gray-400">Saldo Utama</p>
+                            <p className="text-4xl font-bold text-gray-900 dark:text-white mt-2">
                                 Rp{new Intl.NumberFormat('id-ID').format(mainBalance)}
                             </p>
                         </div>

@@ -1,11 +1,5 @@
 import React, { useState } from 'react';
 
-// Impor komponen layout Anda
-import Sidebar from '../partial/sidebar';
-import Header from '../partial/header';
-
-// Impor ikon (pastikan Anda sudah menginstal react-icons)
-// npm install react-icons
 import { FiTrendingUp, FiTrendingDown, FiDollarSign, FiPercent, FiCalendar } from 'react-icons/fi';
 
 // Impor komponen chart yang sudah ada (asumsi path-nya benar)
@@ -59,19 +53,12 @@ const TopExpensesTable = () => (
 // --- Komponen Halaman Laporan Utama ---
 
 const ReportPage = () => {
-    const [sidebarOpen, setSidebarOpen] = useState(false);
     const [reportType, setReportType] = useState('monthly'); // 'monthly' atau 'yearly'
 
     return (
         <div className="flex h-screen overflow-hidden bg-gray-100 dark:bg-gray-900">
-            {/* Sidebar */}
-            <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-
             {/* Area Konten */}
-            <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
-                {/* Header */}
-                <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-                
+            <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">  
                 <main>
                     <div className="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
                         
