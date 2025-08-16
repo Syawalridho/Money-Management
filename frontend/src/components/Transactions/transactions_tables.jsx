@@ -1,84 +1,127 @@
-import React from 'react';
-import { Edit, Trash2, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState } from "react";
 
 const mockTransactions = [
-    { id: 1, date: '2024-02-15', type: 'Income', category: 'Salary', description: 'Monthly Salary', amount: 350000000},
-    { id: 2, date: '2024-02-14', type: 'Expense', category: 'Shopping', description: 'Grocery Shopping', amount: 305000 },
-    { id: 3, date: '2024-02-14', type: 'Expense', category: 'Bills', description: 'Electricity Bill', amount: 100000 },
-    { id: 4, date: '2024-02-13', type: 'Income', category: 'Freelance', description: 'Web Development Project', amount: 800000 },
-    { id: 5, date: '2024-02-13', type: 'Expense', category: 'Transport', description: 'Fuel', amount: 25000 },
-    { id: 6, date: '2024-02-12', type: 'Expense', category: 'Food', description: 'Restaurant Dinner', amount: 130000 },
-    { id: 7, date: '2024-02-12', type: 'Income', category: 'Investment', description: 'Stock Dividends', amount: 465000 },
-    { id: 8, date: '2024-02-11', type: 'Expense', category: 'Entertainment', description: 'Movie Tickets', amount: 30000 },
+  { id: 1, date: "2025-08-01", type: "Income", category: "Salary", description: "Monthly salary", amount: 5000 },
+  { id: 2, date: "2025-08-05", type: "Expense", category: "Food", description: "Groceries", amount: 150 },
+  { id: 3, date: "2025-08-07", type: "Expense", category: "Transport", description: "Fuel", amount: 60 },
 ];
 
-const TypeBadge = ({ type }) => {
-    const isIncome = type === 'Income';
-    return (
-        <span className={`px-2 py-1 text-xs font-medium rounded-full ${
-            isIncome 
-                ? 'bg-green-700 text-green-300' 
-                : 'bg-red-700 text-red-300'
-        }`}>
-            {type}
+const Badge = ({ children, tone }) => (
+  <span
+    className={`inline-flex items-center justify-center rounded-full px-2 py-1 text-xs border
+      ${tone === "green"
+        ? "text-green-300 border-green-400/40 bg-green-500/15"
+        : "text-red-300 border-red-400/40 bg-red-500/15"}`}
+  >
+    {children}
+  </span>
+);
+
+export default function TransactionsTable() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
+  const totalPages = Math.ceil(mockTransactions.length / itemsPerPage);
+
+  const currentTransactions = mockTransactions.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  return (
+    <div className="relative w-full">
+      {/* Title + link kanan */}
+      <div className="flex items-center justify-between mb-3 px-4 pt-4">
+        <h2 className="text-lg font-semibold text-white">Transaksi</h2>
+        <a
+          href="/report"
+          className="text-sm text-blue-400 hover:text-blue-300 underline underline-offset-2"
+        >
+          Lihat semua transaksi
+        </a>
+      </div>
+
+      <div className="overflow-x-auto">
+        <table className="w-full text-sm text-left text-gray-300">
+          {/* HEADER */}
+          <thead className="text-xs uppercase">
+            <tr className="bg-black/40 backdrop-blur-xl text-white/80">
+              <th scope="col" className="p-4 text-center align-middle">
+                <input type="checkbox" className="rounded" />
+              </th>
+              <th scope="col" className="px-6 py-3 text-left align-middle">Date</th>
+              <th scope="col" className="px-6 py-3 text-center align-middle">Type</th>
+              <th scope="col" className="px-6 py-3 text-left align-middle">Category</th>
+              <th scope="col" className="px-6 py-3 text-left align-middle">Description</th>
+              <th scope="col" className="px-6 py-3 text-right align-middle">Amount</th>
+              <th scope="col" className="px-6 py-3 text-center align-middle">Actions</th>
+            </tr>
+          </thead>
+
+          {/* BODY */}
+          <tbody>
+            {currentTransactions.map((tx) => (
+              <tr key={tx.id} className="border-b border-white/10">
+                <td className="p-4 text-center align-middle">
+                  <input type="checkbox" className="rounded" />
+                </td>
+                <td className="px-6 py-4 text-left align-middle">{tx.date}</td>
+                <td className="px-6 py-4 text-center align-middle">
+                  <Badge tone={tx.type === "Income" ? "green" : "red"}>{tx.type}</Badge>
+                </td>
+                <td className="px-6 py-4 text-left align-middle">{tx.category}</td>
+                <td className="px-6 py-4 text-left align-middle">{tx.description}</td>
+                <td
+                  className={`px-6 py-4 text-right align-middle font-semibold ${
+                    tx.type === "Income" ? "text-green-300" : "text-red-300"
+                  }`}
+                >
+                  {tx.type === "Income" ? "+" : "-"}Rp{tx.amount.toLocaleString("id-ID")}
+                </td>
+                <td className="px-6 py-4 text-center align-middle">
+                  <button className="text-blue-400 hover:text-blue-300 mr-2">✏️</button>
+                  <button className="text-red-400 hover:text-red-300">🗑️</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Footer: showing + pagination */}
+      <div className="flex items-center justify-between px-6 py-3 text-sm text-gray-400">
+        <span>
+          Showing {(currentPage - 1) * itemsPerPage + 1} to{" "}
+          {Math.min(currentPage * itemsPerPage, mockTransactions.length)} of{" "}
+          {mockTransactions.length} entries
         </span>
-    );
-};
-
-const TransactionsTable = () => {
-    return (
-        <div className="bg-white rounded-xl shadow-md overflow-hidden dark:bg-gray-800 dark:border-gray-700">
-            <div className="overflow-x-auto">
-                <table className="w-full text-sm text-left text-gray-600 dark:text-gray-200">
-                    <thead className="bg-gray-50 text-xs text-gray-700 uppercase dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
-                        <tr>
-                            <th scope="col" className="p-4"><input type="checkbox" className="rounded"/></th>
-                            <th scope="col" className="px-6 py-3">Date</th>
-                            <th scope="col" className="px-6 py-3">Type</th>
-                            <th scope="col" className="px-6 py-3">Category</th>
-                            <th scope="col" className="px-6 py-3">Description</th>
-                            <th scope="col" className="px-6 py-3 text-right">Amount</th>
-                            <th scope="col" className="px-6 py-3 text-center">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {mockTransactions.map((tx) => (
-                            <tr key={tx.id} className="bg-white border-b hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
-                                <td className="p-4"><input type="checkbox" className="rounded"/></td>
-                                <td className="px-6 py-4">{tx.date}</td>
-                                <td className="px-6 py-4"><TypeBadge type={tx.type} /></td>
-                                <td className="px-6 py-4">{tx.category}</td>
-                                <td className="px-6 py-4 font-medium text-gray-900 dark:text-gray-300">{tx.description}</td>
-                                <td className={`px-6 py-4 text-right font-semibold ${tx.type === 'Income' ? 'text-green-400' : 'text-red-400'}`}>
-                                    {tx.type === 'Income' ? '+' : '-'}Rp{tx.amount.toFixed(2)}
-                                </td>
-                                <td className="px-6 py-4">
-                                    <div className="flex items-center justify-center space-x-3">
-                                        <button className="text-gray-500 hover:text-blue-600"><Edit size={18} /></button>
-                                        <button className="text-gray-500 hover:text-red-600"><Trash2 size={18} /></button>
-                                    </div>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
-            
-            {/* Pagination */}
-            <div className="flex items-center justify-between p-4 text-sm">
-                <span className="text-gray-600">Showing 1 to 8 of 50 entries</span>
-                <div className="flex items-center space-x-2">
-                    <button className="p-2 border rounded-md text-black hover:bg-gray-100 disabled:opacity-50" disabled><ChevronLeft size={16}/></button>
-                    <button className="w-8 h-8 border rounded-md bg-blue-600 text-white">1</button>
-                    <button className="w-8 h-8 border rounded-md text-black hover:bg-gray-100">2</button>
-                    <button className="w-8 h-8 border rounded-md text-black hover:bg-gray-100">3</button>
-                    <span className="text-black">...</span>
-                    <button className="w-8 h-8 border rounded-md text-black hover:bg-gray-100">5</button>
-                    <button className="p-2 border rounded-md text-black hover:bg-gray-100"><ChevronRight size={16}/></button>
-                </div>
-            </div>
+        <div className="flex items-center space-x-2">
+          <button
+            onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+            disabled={currentPage === 1}
+            className="px-2 py-1 rounded bg-white/10 hover:bg-white/20 disabled:opacity-30"
+          >
+            &lt;
+          </button>
+          {Array.from({ length: totalPages }).map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrentPage(idx + 1)}
+              className={`px-2 py-1 rounded ${
+                currentPage === idx + 1 ? "bg-blue-500 text-white" : "bg-white/10 hover:bg-white/20"
+              }`}
+            >
+              {idx + 1}
+            </button>
+          ))}
+          <button
+            onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+            disabled={currentPage === totalPages}
+            className="px-2 py-1 rounded bg-white/10 hover:bg-white/20 disabled:opacity-30"
+          >
+            &gt;
+          </button>
         </div>
-    );
-};
-
-export default TransactionsTable;
+      </div>
+    </div>
+  );
+}

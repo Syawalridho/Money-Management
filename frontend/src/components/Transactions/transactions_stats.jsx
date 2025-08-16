@@ -2,24 +2,24 @@ import React from 'react';
 import { ArrowUpRight, ArrowDownLeft, WalletCards, Scale } from 'lucide-react';
 
 const StatCard = ({ icon, title, value, bgColor, iconColor }) => (
-    <div className="bg-white p-6 rounded-xl shadow-md flex items-center space-x-4 dark:bg-gray-800 dark:border-gray-700">
+    <div className="p-6 rounded-xl flex items-center space-x-4 
+                    bg-white/10 backdrop-blur-sm border border-white/10">
         <div className={`p-3 rounded-full ${bgColor}`}>
             {React.cloneElement(icon, { color: iconColor, size: 24 })}
         </div>
         <div>
-            <p className="text-sm text-gray-500 dark:text-gray-400">{title}</p>
-            <p className="text-2xl font-bold text-gray-800 dark:text-gray-400">{value}</p>
+            <p className="text-sm text-white/70">{title}</p>
+            <p className="text-2xl font-bold text-white">{value}</p>
         </div>
     </div>
 );
 
-
 const TransactionStats = () => {
     const stats = [
-        { icon: <WalletCards />, title: 'Total Transactions', value: '50', bgColor: 'bg-blue-100', iconColor: '#3B82F6' },
-        { icon: <ArrowUpRight />, title: 'Total Income', value: 'Rp600.000,00', bgColor: 'bg-green-100', iconColor: '#10B981' },
-        { icon: <ArrowDownLeft />, title: 'Total Expenses', value: 'Rp230.000,00', bgColor: 'bg-red-100', iconColor: '#EF4444' },
-        { icon: <Scale />, title: 'Net Balance', value: 'Rp4.600.000,00', bgColor: 'bg-purple-100', iconColor: '#8B5CF6' },
+        { icon: <WalletCards />, title: 'Total Transactions', value: '50', bgColor: 'bg-blue-500/20', iconColor: '#3B82F6' },
+        { icon: <ArrowUpRight />, title: 'Total Income', value: 'Rp600.000,00', bgColor: 'bg-green-500/20', iconColor: '#10B981' },
+        { icon: <ArrowDownLeft />, title: 'Total Expenses', value: 'Rp230.000,00', bgColor: 'bg-red-500/20', iconColor: '#EF4444' },
+        { icon: <Scale />, title: 'Net Balance', value: 'Rp4.600.000,00', bgColor: 'bg-purple-500/20', iconColor: '#8B5CF6' },
     ];
 
     return (
