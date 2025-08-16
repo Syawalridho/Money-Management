@@ -11,15 +11,21 @@ const IncomeExpense = () => {
         { name: 'Jun', Pemasukan: 4390, Pengeluaran: 3800 },
     ];
     return (
-        <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:bg-gray-800 dark:border-gray-700 h-96">
-            <h3 className="font-semibold text-gray-800 dark:text-gray-400">Pemasukan vs Pengeluaran</h3>
+        <div className="h-80 -mt-6 -ml-4">
             <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={data} margin={{ top: 30, right: 20, left: -20, bottom: 20 }}>
-                    <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                    <XAxis dataKey="name" axisLine={false} tickLine={false} />
-                    <YAxis axisLine={false} tickLine={false} tickFormatter={(value) => `${value/1000}k`} />
-                    <Tooltip formatter={(value) => new Intl.NumberFormat('id-ID').format(value)} />
-                    <Legend />
+                <LineChart data={data} margin={{ top: 30, right: 20, left: 0, bottom: 20 }}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.1)" vertical={false} />
+                    <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#a0aec0' }} />
+                    <YAxis axisLine={false} tickLine={false} tickFormatter={(value) => `${value/1000}k`} tick={{ fill: '#a0aec0' }} />
+                    <Tooltip 
+                        contentStyle={{ 
+                            backgroundColor: 'rgba(20, 20, 20, 0.8)', 
+                            borderColor: 'rgba(255, 255, 255, 0.2)',
+                            borderRadius: '0.75rem'
+                        }}
+                        formatter={(value) => new Intl.NumberFormat('id-ID').format(value)} 
+                    />
+                    <Legend wrapperStyle={{ color: '#ffffff' }} />
                     <Line type="monotone" dataKey="Pemasukan" stroke="#3b82f6" strokeWidth={3} dot={{ r: 5 }} activeDot={{ r: 7 }}/>
                     <Line type="monotone" dataKey="Pengeluaran" stroke="#ef4444" strokeWidth={3} dot={{ r: 5 }} activeDot={{ r: 7 }} />
                 </LineChart>

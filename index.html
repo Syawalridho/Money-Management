@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Budgeting Bulan Ini</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white p-6">
+  <div class="max-w-3xl mx-auto">
+    <h1 class="text-2xl font-bold mb-4">Budgeting Bulan Ini</h1>
+    <div id="budget-list" class="space-y-6"></div>
+
+    <!-- Form Tambah Anggaran -->
+    <div class="mt-6 bg-gray-800 p-4 rounded-lg shadow">
+      <h2 class="text-lg font-semibold mb-3">Tambah Anggaran Baru</h2>
+      <div class="flex flex-wrap gap-2">
+        <input id="category" type="text" placeholder="Kategori"
+          class="p-2 rounded bg-gray-700 text-white flex-1 min-w-[120px]" />
+        <input id="limit" type="number" placeholder="Batas"
+          class="p-2 rounded bg-gray-700 text-white flex-1 min-w-[120px]" />
+        <input id="spent" type="number" placeholder="Terpakai"
+          class="p-2 rounded bg-gray-700 text-white flex-1 min-w-[120px]" />
+        <button onclick="addBudget()"
+          class="bg-blue-500 px-4 py-2 rounded hover:bg-blue-600">Tambah</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let budgets = [
+      { category: "Makanan", limit: 1500000, spent: 1200000 },
+      { category: "Transportasi", limit: 500000, spent: 450000 },
+      { category: "Hiburan", limit: 600000, spent: 650000 }
+    ];
+
+    function getBarColor(percentage) {
+      if (percentage > 100) return "bg-red-500";
+      if (percentage >= 80) return "bg-yellow-500";
+      return "bg-blue-500";
+    }
+
+    function renderBudgets() {
+      const container = document.getElementById("budget-list");
+      container.innerHTML = "";
+      budgets.forEach(b => {
+        const percentage = (b.spent / b.limit) * 100;
+        const barColor = getBarColor(percentage);
+        container.innerHTML += `
+          <div class="bg-gray-800 p-4 rounded-lg shadow">
+            <div class="flex justify-between mb-2">
+              <span class="font-semibold">${b.category}</span>
+              <span class="${percentage > 100 ? "text-red-400" : "text-gray-300"}">
+                Rp${b.spent.toLocaleString()} / Rp${b.limit.toLocaleString()}
+              </span>
+            </div>
+            <div class="w-full bg-gray-700 h-3 rounded">
+              <div class="${barColor} h-3 rounded" style="width: ${Math.min(percentage, 100)}%"></div>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    function addBudget() {
+      const category = document.getElementById("category").value;
+      const limit = parseInt(document.getElementById("limit").value);
+      const spent = parseInt(document.getElementById("spent").value);
+      if (!category || !limit || !spent) return alert("Harap isi semua kolom");
+      budgets.push({ category, limit, spent });
+      renderBudgets();
+      document.getElementById("category").value = "";
+      document.getElementById("limit").value = "";
+      document.getElementById("spent").value = "";
+    }
+
+    renderBudgets();
+  </script>
+</body>
+</html>

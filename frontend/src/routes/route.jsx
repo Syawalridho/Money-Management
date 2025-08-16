@@ -10,7 +10,11 @@ import Dashboard from '../pages/dashboard';
 import TransactionsPage from '../pages/transactions_page';
 import ProfilePage from '../pages/profile';
 import ReportPage from '../pages/report';
+import BudgetingPage from '../pages/budgeting'; 
+import SavingGoals from '../pages/goals';
+import CalendarView from '../pages/calendar';
 
+import Testing from '../pages/testing';
 function AppRoutes() {
   // TIDAK ADA <Router> DI SINI. Langsung return <Routes>.
   return (
@@ -19,11 +23,16 @@ function AppRoutes() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         
+
         <Route element={<MainLayout />}>
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/dashboard" element={ <Dashboard />} />
+          <Route path="/testing" element={<Testing />} />
           <Route path="/transactions" element={ <TransactionsPage />} />
           <Route path="/report" element={ <ReportPage />} />
+          <Route path="/budgeting" element={ <BudgetingPage />} />
+          <Route path="/goals" element={<SavingGoals />} />
+          <Route path="/calendar" element={<CalendarView />} />
         </Route>
 
       </Routes>

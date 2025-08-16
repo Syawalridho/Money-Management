@@ -1,26 +1,27 @@
 import React, { useState } from 'react';
 
 import DropdownProfile from '../components/DropdownProfile'; 
-import ThemeToggle from '../components/ThemeToggle'; // <-- 1. Impor komponen baru
-
-// Hapus definisi placeholder const ThemeToggle = ...
+import ThemeToggle from '../components/ThemeToggle';
 
 function Header({
   sidebarOpen,
   setSidebarOpen,
 }) {
-  const [searchModalOpen, setSearchModalOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 bg-white dark:bg-[#182235] border-b border-gray-200 dark:border-gray-700/60 z-30">
+    // === PERUBAHAN GAYA HEADER ===
+    // Mengganti background solid dengan background kaca yang transparan
+    // dan menyesuaikan border agar cocok dengan tema
+    <header className="sticky top-0 z-30 bg-black/40 border-b border-white/10">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 -mb-px">
 
-          {/* Header: Left side */}
+          {/* Header: Sisi Kiri */}
           <div className="flex">
-            {/* Hamburger button */}
+            {/* Tombol Hamburger */}
             <button
-              className="text-gray-500 hover:text-gray-600 lg:hidden"
+              // Mengubah warna ikon hamburger agar terlihat di background gelap
+              className="text-gray-300 hover:text-white lg:hidden"
               aria-controls="sidebar"
               aria-expanded={sidebarOpen}
               onClick={(e) => { e.stopPropagation(); setSidebarOpen(!sidebarOpen); }}
@@ -34,14 +35,14 @@ function Header({
             </button>
           </div>
 
-          {/* Header: Right side */}
+          {/* Header: Sisi Kanan */}
           <div className="flex items-center space-x-3">
             
-            {/* 2. Gunakan komponen ThemeToggle di sini */}
             <ThemeToggle />
             
             {/* Pembatas */}
-            <hr className="w-px h-6 bg-gray-200 dark:bg-gray-700/60 border-none" />
+            {/* Mengubah warna pembatas agar cocok dengan tema kaca */}
+            <hr className="w-px h-6 bg-white/20 border-none" />
             
             <DropdownProfile align="right" />
 

@@ -1,58 +1,58 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-// Impor komponen layout
-import Sidebar from '../partial/sidebar';
-import Header from '../partial/header';
-
-// Impor semua komponen kartu dashboard yang akan digunakan
+// Impor komponen
+import GlassCard from '../components/ui/GlassCard';
 import IncomeExpense from '../components/Dashboard/IncomeExpense';
 import SpendingCategory from '../components/Dashboard/SpendingCategory';
 import SummaryCards from '../components/Dashboard/SummaryCards'; 
 import Transactions from '../components/Dashboard/Transactions';  
 
-const Dashboard = () => {
-    const [sidebarOpen, setSidebarOpen] = useState(false);
+// Latar belakang tidak lagi diimpor atau digunakan di sini.
+// MainLayout.jsx sudah menanganinya.
 
-    // Data simulasi untuk Saldo Utama
+const Dashboard = () => {
     const mainBalance = 5320300; 
 
+    // PERBAIKAN:
+    // Semua div pembungkus yang mengatur layout (seperti flex, h-screen, overflow)
+    // telah dihapus. Komponen ini sekarang hanya mengembalikan kontennya saja.
+    // MainLayout akan menempatkan ini di dalam <main> yang sudah bisa di-scroll.
     return (
-        <div className="flex h-screen overflow-hidden bg-gray-100 dark:bg-gray-900">
-            <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">    
-                <main>
-                    <div className="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
-                        {/* Kartu Saldo Utama Tetap di Atas */}
-                        <div className="rounded-xl border border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-700 p-6 shadow-sm mb-6">
-                            <p className="text-lg font-medium text-gray-600 dark:text-gray-400">Saldo Utama</p>
-                            <p className="text-4xl font-bold text-gray-900 dark:text-white mt-2">
-                                Rp{new Intl.NumberFormat('id-ID').format(mainBalance)}
-                            </p>
-                        </div>
-                        
-                        {/* STRUKTUR GRID BARU (3 KOLOM) */}
-                        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-                            
-                            {/* --- BARIS 1 --- */}
-                            <div className="lg:col-span-2">
-                                <IncomeExpense />
-                            </div>
-                            <div className="lg:col-span-1">
-                                <SpendingCategory />
-                            </div>
+        <div className="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+            <div className="mb-6">
+                <GlassCard title="Saldo Utama">
+                <p className="text-4xl font-bold text-white">
+                    Rp{new Intl.NumberFormat('id-ID').format(mainBalance)}
+                </p>
+                </GlassCard>
+            </div>
+            
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+                
+                <div className="lg:col-span-2">
+                    <GlassCard title="Pemasukan vs Pengeluaran">
+                        <IncomeExpense />
+                    </GlassCard>
+                </div>
+                
+                <div className="lg:col-span-1">
+                    <GlassCard title="Pengeluaran per Kategori">
+                        <SpendingCategory />
+                    </GlassCard>
+                </div>
 
-                            {/* --- BARIS 2 --- */}
-                            <div className="lg:col-span-3">
-                                <SummaryCards />
-                            </div>
-                            
-                            {/* --- BARIS 3 --- */}
-                            <div className="lg:col-span-3">
-                                <Transactions />
-                            </div>
+                <div className="lg:col-span-3">
+                    <GlassCard title="Ringkasan Bulan Ini">
+                        <SummaryCards />
+                    </GlassCard>
+                </div>
+                
+                <div className="lg:col-span-3">
+                    <GlassCard title="Transaksi Terakhir">
+                        <Transactions />
+                    </GlassCard>
+                </div>
 
-                        </div>
-                    </div>
-                </main>
             </div>
         </div>
     );
