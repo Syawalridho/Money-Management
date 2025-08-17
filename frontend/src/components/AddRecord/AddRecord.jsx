@@ -1,86 +1,120 @@
-import React, { useState, useEffect } from 'react';
-import MainView from './MainView';
-import CategoryView from './CategoryView';
-import DateView from './DateView';
+import React, { useEffect, useState } from "react";
+import MainView from "./MainView";
+import CategoryView from "./CategoryView";
+import DateView from "./DateView";
+import LabelView from "./LabelView";
+import { createTransaction } from "@/services/transactionsService";
 
-const AddRecord = ({ isOpen, onClose }) => {
-    const [currentView, setCurrentView] = useState('main');
-    const [recordType, setRecordType] = useState('expense');
-    
-    const [formData, setFormData] = useState({
-        amount: '',
-        account: 'Cash',
-        category: 'Pilih Kategori',
-        date: 'Hari Ini',
-        time: new Date().toTimeString().substring(0, 5)
-    });
-
-    useEffect(() => {
-        const handleEsc = (event) => {
-            if (event.keyCode === 27) onClose();
-        };
-        window.addEventListener('keydown', handleEsc);
-        return () => window.removeEventListener('keydown', handleEsc);
-    }, [onClose]);
-
-    useEffect(() => {
-        if (isOpen) {
-            setCurrentView('main');
-        }
-    }, [isOpen]);
-
-    const handleSelectCategory = (category) => {
-        setFormData(prev => ({ ...prev, category }));
-        setCurrentView('main');
-    };
-
-    const handleSaveDate = () => {
-        setCurrentView('main');
-    };
-
-    if (!isOpen) return null;
-
-    const bgColorClass = {
-        expense: 'bg-red-500',
-        income: 'bg-green-500',
-    };
-
-    // Fungsi ini akan menentukan view mana yang akan ditampilkan
-    const renderContent = () => {
-        switch (currentView) {
-            case 'category':
-                return <CategoryView onBack={() => setCurrentView('main')} onSelectCategory={handleSelectCategory} />;
-            case 'date':
-                return <DateView onBack={() => setCurrentView('main')} onSaveDate={handleSaveDate} />;
-            default:
-                return (
-                    <MainView 
-                        recordType={recordType}
-                        setRecordType={setRecordType}
-                        bgColorClass={bgColorClass[recordType]}
-                        onClose={onClose}
-                        formData={formData}
-                        setFormData={setFormData}
-                        onNavigate={setCurrentView}
-                    />
-                );
-        }
-    };
-
-    return (
-        <div 
-            className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-sm"
-            onClick={onClose}
-        >
-            <div 
-                className="relative w-full max-w-md rounded-2xl bg-white dark:bg-gray-800 shadow-xl m-4"
-                onClick={e => e.stopPropagation()}
-            >
-                {/* PERUBAHAN UTAMA DI SINI: Panggil fungsi renderContent() */}
-                {renderContent()}
-            </div>
-        </div>
-    );
+const initialForm = {
+  amount: "", account: "Cash", category: "Pilih Kategori",
+  date: "", time: "", label: "",
 };
 
-export default AddRecord;
+export default function AddRecord({ isOpen, onClose, onCreated }) {
+  const [view, setView] = useState("main");           // 'main' | 'category' | 'date' | 'label'
+  const [recordType, setRecordType] = useState("expense");
+  const [formData, setFormData] = useState(initialForm);
+
+  useEffect(() => {
+    if (!isOpen) {
+      setView("main"); setRecordType("expense"); setFormData(initialForm);
+    }
+  }, [isOpen]);
+
+  const handleChangeType = (t) => {
+    setRecordType(t);
+    setFormData((s) => ({ ...s, category: "Pilih Kategori" }));
+  };
+
+  const handleSelectCategory = (name) => {
+    setFormData((s) => ({ ...s, category: name }));
+    setView("main");
+  };
+
+  const handleSaveDate = ({ date, time }) => {
+    setFormData((s) => ({ ...s, date: date || s.date, time: time || s.time }));
+    setView("main");
+  };
+
+  async function handleSave() {
+    if (!formData.amount) return alert("Nominal belum diisi");
+    if (!formData.category || formData.category === "Pilih Kategori")
+      return alert("Kategori belum dipilih");
+
+    const now = new Date();
+    const dateStr =
+      typeof formData.date === "string" && /^\d{4}-\d{2}-\d{2}$/.test(formData.date)
+        ? formData.date : now.toISOString().slice(0, 10);
+    const timeStr =
+      typeof formData.time === "string" && /^\d{2}:\d{2}$/.test(formData.time)
+        ? formData.time : "00:00";
+    const occurred_at = `${dateStr} ${timeStr}:00`;
+
+    const payload = {
+      type: recordType === "income" ? "income" : "expense",
+      account: formData.account || "Cash",
+      category: formData.category,
+      amount: Number(String(formData.amount).replace(/[^\d]/g, "")) || 0,
+      occurred_at,
+      label: formData.label || null,
+      user_id: null,
+    };
+
+    try {
+      const saved = await createTransaction(payload);
+      onCreated?.(saved);
+      window.dispatchEvent(new CustomEvent("tx:created", { detail: saved }));
+      onClose();
+    } catch (e) {
+      console.error("CREATE FAILED", e);
+      alert("Gagal menyimpan transaksi");
+    }
+  }
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center">
+      <div className="absolute inset-0 bg-black/60" onClick={onClose} />
+      <div className="relative w-full max-w-md rounded-2xl overflow-hidden bg-[#0b1220]/70 backdrop-blur-xl border border-white/10">
+        {view === "main" && (
+          <MainView
+            recordType={recordType}
+            setRecordType={handleChangeType}
+            formData={formData}
+            setFormData={setFormData}
+            onNavigate={setView}
+            onSave={handleSave}
+            onClose={onClose}
+          />
+        )}
+
+        {view === "category" && (
+          <CategoryView
+            type={recordType}
+            onBack={() => setView("main")}
+            onSelectCategory={handleSelectCategory}
+          />
+        )}
+
+        {view === "date" && (
+          <DateView
+            onBack={() => setView("main")}
+            onSaveDate={handleSaveDate}
+            onSave={handleSaveDate}
+            defaultDate={formData.date}
+            defaultTime={formData.time}
+          />
+        )}
+
+        {view === "label" && (
+          <LabelView
+            formData={formData}
+            setFormData={setFormData}
+            onClose={() => setView("main")}
+          />
+        )}
+      </div>
+    </div>
+  );
+}

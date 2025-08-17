@@ -1,43 +1,56 @@
-import React from 'react';
-import { FiChevronLeft } from 'react-icons/fi';
+import React, { useState } from "react";
 
-const DateView = ({ onBack, onSaveDate }) => {
-    return (
+export default function DateView({
+  onBack,
+  onSaveDate,           // prefer
+  onSave,               // fallback
+  defaultDate = "",
+  defaultTime = "",
+}) {
+  const today = new Date();
+  const [date, setDate] = useState(
+    defaultDate || today.toISOString().slice(0, 10)
+  );
+  const [time, setTime] = useState(defaultTime || "00:00");
+
+  const submit = () => {
+    const payload = { date, time };
+    if (onSaveDate) onSaveDate(payload);
+    else if (onSave) onSave(payload);
+  };
+
+  return (
+    <div className="text-white">
+      <div className="flex items-center justify-between px-4 py-3 border-b border-white/10">
+        <button onClick={onBack} className="text-gray-400 hover:text-white">
+          Kembali
+        </button>
+        <h3 className="font-semibold">Tanggal & Waktu</h3>
+        <button onClick={submit} className="text-blue-400 hover:text-blue-300">
+          Simpan
+        </button>
+      </div>
+
+      <div className="p-4 space-y-4">
         <div>
-            {/* Header */}
-            <div className="flex items-center justify-between p-4 border-b dark:border-gray-700">
-                <button onClick={onBack} className="p-2 -ml-2 text-gray-500 hover:text-gray-800 dark:hover:text-white">
-                    <FiChevronLeft size={24}/>
-                </button>
-                <h3 className="text-lg font-semibold text-gray-800 dark:text-white">Tanggal & Waktu</h3>
-                <button onClick={onSaveDate} className="font-semibold text-blue-600">Simpan</button>
-            </div>
-
-            {/* Konten */}
-            <div className="p-6">
-                <div className="space-y-4">
-                    <div>
-                        <label htmlFor="date-input" className="text-sm font-medium text-gray-500 dark:text-gray-400">Tanggal</label>
-                        <input 
-                            type="date"
-                            id="date-input"
-                            defaultValue={new Date().toISOString().split('T')[0]} // Set default ke hari ini
-                            className="mt-1 w-full p-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 rounded-lg"
-                        />
-                    </div>
-                     <div>
-                        <label htmlFor="time-input" className="text-sm font-medium text-gray-500 dark:text-gray-400">Waktu</label>
-                        <input 
-                            type="time"
-                            id="time-input"
-                            defaultValue={new Date().toTimeString().substring(0, 5)} // Set default ke waktu sekarang
-                            className="mt-1 w-full p-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 rounded-lg"
-                        />
-                    </div>
-                </div>
-            </div>
+          <label className="block text-gray-300 mb-1">Tanggal</label>
+          <input
+            type="date"
+            className="w-full rounded-md bg-white/10 px-3 py-2 outline-none"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+          />
         </div>
-    );
-};
-
-export default DateView;
+        <div>
+          <label className="block text-gray-300 mb-1">Waktu</label>
+          <input
+            type="time"
+            className="w-full rounded-md bg-white/10 px-3 py-2 outline-none"
+            value={time}
+            onChange={(e) => setTime(e.target.value)}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}

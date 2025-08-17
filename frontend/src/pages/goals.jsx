@@ -1,8 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import GlassCard from "../components/ui/GlassCard";
 import { GoalsHeader, GoalsGrid, GoalFormModal } from "../components/Goals";
-import { fetchGoals, createGoal, updateGoal, deleteGoal } from "../services/goalsService";
-
+import { listGoals as fetchGoals, createGoal, updateGoal, deleteGoal } from "../services/goalsService";
 // fallback lokal kalau fetch gagal (opsional)
 const fallback = [
   {
